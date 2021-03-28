@@ -1,0 +1,61 @@
+@model lamsef.Models.DepartmentModels
+@{
+    ViewBag.Title = "NewEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("NewEmployee", "Department", FormMethod.Post, new { @id = "RegisterForm" }))
+{
+    <html>
+    <head>
+    </head>
+    <body>
+        <h2>Add New Employee</h2>
+        <div>
+            <div class="mainbox2">
+                <label class="addLabel">Select Department</label>
+                <label class="addRequired">required</label>
+                @Html.DropDownListFor(model => model.SelectDepartmentId,
+                            new SelectList(Model.DepartmentList, "DepartmentId", "DepartmentName"), "", new { @class = "selectBoxAdd" })
+            </div>
+            <div class="mainbox2">
+                <label class="addLabel">Employee Name</label>
+                <label class="addRequired">required</label>
+                @Html.TextBox("NewEmployeeName", "", new { @maxlength = 30, @class = "selectBoxAdd" })
+            </div>
+            <div class="mainbox2">
+                <label class="addLabel">Company Employee Code</label>
+                <label class="addRequired">required</label>
+                @Html.TextBox("NewCompanyEmployeeCode", "", new { @maxlength = 8, @class = "selectBoxAdd" })
+            </div>
+        </div>
+        <p>
+            <input type="submit" value="Register" name="button" />
+            <input type="button" value="Cancel" onclick="getConfirmationCancel();" />
+        </p>
+        @if (Model.checkInputflag == false)
+        {
+            <label>Please enter data in all the fields!</label>
+        }
+        @if (Model.checkCodeflag == false)
+        {
+            <label>Registration failed. The company employee code already exists in the database.</label>
+        }
+        <script type="text/javascript">
+            $("body").on("submit", "#RegisterForm", function () {
+                return confirm("Do you want to register this content into the database ?");
+            });
+
+            function getConfirmationCancel() {
+                var retVal = confirm("Do you want to continue ?");
+                if (retVal == true) {
+                    location.href = "Index/Department";
+                } else {
+                    return false;
+                }
+            };
+        </script>
+    </body>
+    </html>
+}

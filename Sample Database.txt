@@ -1,0 +1,10 @@
+INSERT INTO M_Department (DepartmentId, DepartmentName, RegionId, RegionName) VALUES ('1', 'PLM Department', '1', 'Japan');
+INSERT INTO M_Department (DepartmentId, DepartmentName, RegionId, RegionName) VALUES ('2', 'MBD Department', '1', 'Japan');
+INSERT INTO M_Department (DepartmentId, DepartmentName, RegionId, RegionName) VALUES ('3', 'AI Department', '1', 'Japan');
+
+INSERT INTO M_Employee (EmployeeId, EmployeeName, CompanyEmployeeCode, DepartmentId, IsDeleted, CreateBy, CreateOn,  UpdateBy, UpdateOn) VALUES ('1', 'Tran Van Hai', 'MCOR0001', '1', '0', 'HaiTV', '2021-03-26 08:08:08', 'HaiTV', '2021-03-26 08:08:08');
+INSERT INTO M_Employee (EmployeeId, EmployeeName, CompanyEmployeeCode, DepartmentId, IsDeleted, CreateBy, CreateOn,  UpdateBy, UpdateOn) VALUES ('2', 'Pham Ba Van', 'MCOR0002', '1', '0', 'HaiTV', '2021-03-26 08:08:08', 'HaiTV', '2021-03-26 08:08:08');
+INSERT INTO M_Employee (EmployeeId, EmployeeName, CompanyEmployeeCode, DepartmentId, IsDeleted, CreateBy, CreateOn,  UpdateBy, UpdateOn) VALUES ('3', 'Le Tuan Anh', 'MCOR0003', '1', '0', 'HaiTV', '2021-03-26 08:08:08', 'HaiTV', '2021-03-26 08:08:08');
+INSERT INTO M_Employee (EmployeeId, EmployeeName, CompanyEmployeeCode, DepartmentId, IsDeleted, CreateBy, CreateOn,  UpdateBy, UpdateOn) VALUES ('4', 'Nguyen Nhan Tinh', 'MCOR0004', '2', '0', 'HaiTV', '2021-03-26 08:08:08', 'HaiTV', '2021-03-26 08:08:08');
+INSERT INTO M_Employee (EmployeeId, EmployeeName, CompanyEmployeeCode, DepartmentId, IsDeleted, CreateBy, CreateOn,  UpdateBy, UpdateOn) VALUES ('5', 'Giap Van Toan', 'MCOR0005', '2', '0', 'HaiTV', '2021-03-26 08:08:08', 'HaiTV', '2021-03-26 08:08:08');
+INSERT INTO M_Employee (EmployeeId, EmployeeName, CompanyEmployeeCode, DepartmentId, IsDeleted, CreateBy, CreateOn,  UpdateBy, UpdateOn) VALUES ('6', 'Dao Van Lap', 'MCOR0006', '2', '0', 'HaiTV', '2021-03-26 08:08:08', 'HaiTV', '2021-03-26 08:08:08');
