@@ -1,0 +1,62 @@
+﻿@model lamsef.Models.DepartmentModels
+@{
+    ViewBag.Title = "NewEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("NewEmployee", "Department", FormMethod.Post, new { @id = "RegisterForm" }))
+{
+    <html>
+    <head>
+    </head>
+    <body>
+        <h2>Add New Employee</h2>
+        <div>
+            <div class="mainbox2">
+                <label class="addLabel">Select Department</label>
+                <label class="addRequired">Required</label>
+                @Html.DropDownListFor(model => model.SelectDepartmentId,
+                            new SelectList(Model.DepartmentList, "DepartmentId", "DepartmentName"), "", new { @id = "selectBoxAdd" })
+            </div>
+            <div class="mainbox2">
+                <label class="addLabel">Employee Name</label>
+                <label class="addRequired">Required</label>
+                @Html.TextBox("NewEmployeeName", "", new { @maxlength = 30, @id = "selectBoxAdd", @class = "form-control" })
+            </div>
+            <div class="mainbox2">
+                <label class="addLabel">Company Employee Code</label>
+                <label class="addRequired">Required</label>
+                @Html.TextBox("NewCompanyEmployeeCode", "", new { @maxlength = 8, @id = "selectBoxAdd", @class = "form-control" })
+            </div>
+        </div>
+        <p class="buttonRegister">
+            <input class="btn btn-primary" type="submit" value="Register" name="button" id="butonRegister" />
+            <input class="btn btn-danger" type="button" value="Cancel" onclick="getConfirmationCancel()" id="butonCancel" />
+        </p>
+        @if (Model.checkInputflag == false)
+        {
+            <label class="errorMessage">Error: Please enter data in all the fields!</label>
+        }
+        @if (Model.checkCodeflag == false)
+        {
+            <label class="errorMessage">Error: Registration failed. The company employee code already exists in the database.</label>
+        }
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("body").on("submit", "#RegisterForm", function () {
+                return confirm("Do you want to register this content into the database ?");
+            });
+
+            function getConfirmationCancel() {
+                var retVal = confirm("Do you want to continue ?");
+                if (retVal == true) {
+                    location.href = "Index/Department";
+                } else {
+                    return false;
+                }
+            };
+        </script>
+    </body>
+</html>
+}

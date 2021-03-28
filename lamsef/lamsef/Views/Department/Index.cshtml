@@ -1,0 +1,60 @@
+﻿@model lamsef.Models.DepartmentModels
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Employee Management</h2>
+<input class="btn btn-primary" type="submit" onclick="location.href='/Department/NewEmployee'" value="Add New Employee" name="button" />
+@using (Html.BeginForm())
+{
+    <div>
+        <label id="searchConditionLabel">Search Condition</label>
+        <div class="mainbox1">
+            <label class="searchLabel">Select Department</label>
+            @Html.DropDownListFor(model => model.SelectDepartmentId,
+                                  new SelectList(Model.DepartmentList, "DepartmentId", "DepartmentName"), "", new { @class = "selectBox" })
+        </div>
+        <div class="mainbox1">
+            <label class="searchLabel">Employee Name</label>
+            @Html.TextBox("SearchEmployeeName", "", new { maxlength = 30, @id= "searchEmployeeBox", @class= "form-control" })
+        </div>
+        <div class="mainbox1">
+            <label class="searchLabel">Include Data Deleted</label>
+            <input type="checkbox" />
+        </div>
+    </div>
+    <p class="buttonIndex">
+        <input class="btn btn-primary" type="submit" value="Search" name="button" id="buttonSearch" />
+        <input class="btn btn-primary" type="submit" value="CSV Output" name="button" id="buttonCSV" />
+    </p>
+
+    <div>
+        @if (Model.SearchResult != null)
+        {
+            <label id="totalResults">Total Results: @Model.SearchResult.Count</label>
+        }
+        @if (Model.SearchResult != null)
+        {
+            <table style="width:60%">
+                <tr>
+                    <th class="searchResultTable">Select</th>
+                    <th class="searchResultTable">Employee Name</th>
+                    <th class="searchResultTable">Company Employee Code</th>
+                    <th class="searchResultTable">Departmenr Name</th>
+                    <th class="searchResultTable">Region Name</th>
+                </tr>
+                @foreach (var item in Model.SearchResult)
+                {
+                    <tr>
+                        <td></td>
+                        <td class="searchResultTable">@item.EmployeeName</td>
+                        <td class="searchResultTable-EmployeeCode">@item.CompanyEmployeeCode</td>
+                        <td class="searchResultTable">@item.DepartmentName</td>
+                        <td class="searchResultTable">@item.RegionName</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+}
+
